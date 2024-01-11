@@ -3,10 +3,10 @@ package com.example.projetofinal.service;
 import java.util.List;
 
 public interface Service<T> {
-    public List<T> consultar();
-    public T consultarPorId(Long id);
-    public void excluir(Long id);
-    public T salvar(T t);
-    public T alterar(Long id, T t);
+     List<T> consultar();
+     T consultarPorId(Long id);
+     void excluir(Long id);
+     T salvar(T t);
+     T alterar(Long id, T t);
 
 }
