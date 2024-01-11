@@ -5,7 +5,6 @@ import com.example.projetofinal.repository.endereco.PaisRepository;
 import com.example.projetofinal.service.Service;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.NotFound;
 import org.modelmapper.ModelMapper;
 
 import java.util.List;

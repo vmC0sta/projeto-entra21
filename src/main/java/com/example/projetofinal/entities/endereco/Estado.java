@@ -17,4 +17,7 @@ public class Estado {
     @JoinColumn(name = "pais_id", nullable = false)
     private Pais pais;
 
+    @OneToMany(mappedBy = "estado")
+    private List<Municipio> municipio;
+
 }
