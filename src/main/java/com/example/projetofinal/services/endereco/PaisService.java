@@ -15,39 +15,37 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PaisService implements Service<Pais> {
 
-    private final  PaisRepository repository;
-    private final  ModelMapper mapper;
+    private final PaisRepository repository;
+    private final ModelMapper mapper;
 
     @Override
     public List<Pais> findAll() {
-       return repository.findAll();
+        return repository.findAll();
     }
 
     @Override
     public Pais findById(Long id) {
         Optional<Pais> optional = repository.findById(id);
-        return optional.orElseThrow(() -> new ResourceNotFoundException("País","id",id));
+        return optional.orElseThrow(() -> new ResourceNotFoundException("País", "id", id));
     }
 
 
     @Override
     public void delete(Long id) {
-        repository.delete(findById(id)) ;
+        repository.delete(findById(id));
     }
 
     @Override
     public Pais save(Pais pais) {
-       if (repository.findByDescricao(pais.getDescricao()) != null){
-           throw new ResourceAlreadyExistsException("Esse país já existe.");
-       }
-        return  repository.save(pais);
+        if (repository.findByDescricao(pais.getDescricao()) != null)
+            throw new ResourceAlreadyExistsException("Esse país já existe");
+        return repository.save(pais);
     }
 
     @Override
     public Pais update(Long id, Pais paisNovo) {
-        if (repository.findByDescricao(paisNovo.getDescricao()) != null){
+        if (repository.findByDescricao(paisNovo.getDescricao()) != null)
             throw new ResourceAlreadyExistsException("Esse país já existe");
-        }
         Pais pais = findById(id);
         paisNovo.setId(pais.getId());
         mapper.map(paisNovo, pais);

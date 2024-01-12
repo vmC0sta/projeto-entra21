@@ -36,20 +36,15 @@ public class MunicipioService implements Service<Municipio> {
 
     @Override
     public Municipio save(Municipio municipio) {
-        if (repository.findByDescricao(municipio.getDescricao()) != null) {
+        if (repository.findByDescricao(municipio.getDescricao()) != null)
             throw new ResourceAlreadyExistsException("Esse múnicipio já existe");
-        }
-
         return repository.save(municipio);
-
     }
 
     @Override
     public Municipio update(Long id, Municipio municipioNovo) {
-        if (repository.findByDescricao(municipioNovo.getDescricao()) != null) {
-            throw new ResourceAlreadyExistsException("Esse município já existe");
-        }
-
+        if (repository.findByDescricao(municipioNovo.getDescricao()) != null)
+            throw new ResourceAlreadyExistsException("Esse múnicipio já existe");
         Municipio municipio = findById(id);
         municipioNovo.setId(municipio.getId());
         mapper.map(municipioNovo, municipio);

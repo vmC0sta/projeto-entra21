@@ -35,17 +35,15 @@ public class EstadoService implements Service<Estado> {
 
     @Override
     public Estado save(Estado estado) {
-        if (repository.findByDescricao(estado.getDescricao()) != null){
+        if (repository.findByDescricao(estado.getDescricao()) != null)
             throw new ResourceAlreadyExistsException("Esse estado já existe!");
-        }
         return repository.save(estado);
     }
 
     @Override
     public Estado update(Long id, Estado estadoNovo) {
-        if (repository.findByDescricao(estadoNovo.getDescricao()) != null){
+        if (repository.findByDescricao(estadoNovo.getDescricao()) != null)
             throw new ResourceAlreadyExistsException("Esse estado já existe");
-        }
         Estado estado = findById(id);
         estadoNovo.setId(estado.getId());
         mapper.map(estadoNovo,estado);
