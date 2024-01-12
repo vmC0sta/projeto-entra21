@@ -17,14 +17,20 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<StandardError> handleFieldValidationException(MethodArgumentNotValidException e, HttpServletRequest request) {
         FieldError fieldError = e.getBindingResult().getFieldErrors().get(0);
-        StandardError error = buildStandardError(request, HttpStatus.BAD_REQUEST, "Campos inválidos",fieldError.getDefaultMessage());
+        StandardError error = buildStandardError(request, HttpStatus.BAD_REQUEST, "Campos inválidos.",fieldError.getDefaultMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<StandardError> handleResourceNotFoundException(ResourceNotFoundException e, HttpServletRequest request) {
-        StandardError error = buildStandardError(request, HttpStatus.NOT_FOUND, "Recurso não encontrado", e.getMessage());
+        StandardError error = buildStandardError(request, HttpStatus.NOT_FOUND, "Recurso não encontrado.", e.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    @ExceptionHandler(ResourceAlreadyExistsException.class)
+    public ResponseEntity<StandardError> handleResourceAlreadyExistsException(ResourceAlreadyExistsException e, HttpServletRequest request){
+        StandardError error = buildStandardError(request, HttpStatus.BAD_REQUEST,"Recurso já existe.", e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
     private StandardError buildStandardError(HttpServletRequest request, HttpStatus status, String error, String message) {

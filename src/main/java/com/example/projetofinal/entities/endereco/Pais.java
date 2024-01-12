@@ -14,7 +14,7 @@ public class Pais {
     private Long id;
 
 
-    @Column
+    @Column(unique = true)
     @NotBlank(message = "Obrigatório informar a descrição")
     private String descricao;
 

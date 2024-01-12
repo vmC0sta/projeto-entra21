@@ -1,6 +1,7 @@
 package com.example.projetofinal.services.endereco;
 
 import com.example.projetofinal.entities.endereco.Pais;
+import com.example.projetofinal.exceptions.ResourceAlreadyExistsException;
 import com.example.projetofinal.exceptions.ResourceNotFoundException;
 import com.example.projetofinal.repositories.endereco.PaisRepository;
 import com.example.projetofinal.services.Service;
@@ -36,11 +37,17 @@ public class PaisService implements Service<Pais> {
 
     @Override
     public Pais save(Pais pais) {
-       return  repository.save(pais);
+       if (repository.findByDescricao(pais.getDescricao()) != null){
+           throw new ResourceAlreadyExistsException("Esse país já existe.");
+       }
+        return  repository.save(pais);
     }
 
     @Override
     public Pais update(Long id, Pais paisNovo) {
+        if (repository.findByDescricao(paisNovo.getDescricao()) != null){
+            throw new ResourceAlreadyExistsException("Esse país já existe");
+        }
         Pais pais = findById(id);
         paisNovo.setId(pais.getId());
         mapper.map(paisNovo, pais);
