@@ -18,30 +18,30 @@ public class PaisService implements Service<Pais> {
     private final  ModelMapper mapper;
 
     @Override
-    public List<Pais> consultar() {
+    public List<Pais> findAll() {
        return repository.findAll();
     }
 
     @Override
-    public Pais consultarPorId(Long id) {
+    public Pais findById(Long id) {
         Optional<Pais> optional = repository.findById(id);
         return optional.orElseThrow(() -> new ResourceNotFoundException("País","id",id));
     }
 
 
     @Override
-    public void excluir(Long id) {
-        repository.delete(consultarPorId(id)) ;
+    public void delete(Long id) {
+        repository.delete(findById(id)) ;
     }
 
     @Override
-    public Pais salvar(Pais pais) {
+    public Pais save(Pais pais) {
        return  repository.save(pais);
     }
 
     @Override
-    public Pais alterar(Long id, Pais paisNovo) {
-        Pais pais = consultarPorId(id);
+    public Pais update(Long id, Pais paisNovo) {
+        Pais pais = findById(id);
         paisNovo.setId(pais.getId());
         mapper.map(paisNovo, pais);
         return repository.save(pais);

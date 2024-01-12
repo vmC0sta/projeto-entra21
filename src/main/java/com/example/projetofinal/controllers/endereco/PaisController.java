@@ -18,25 +18,25 @@ public class PaisController {
     private final PaisService service;
 
     @PostMapping
-    public ResponseEntity<Object> salvar(@RequestBody @Valid Pais pais){
+    public ResponseEntity<Object> save(@RequestBody @Valid Pais pais){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.salvar(pais));
     }
     @GetMapping
-    public ResponseEntity<List<Pais>> consultar(){
+    public ResponseEntity<List<Pais>> findAll(){
         return ResponseEntity.status(HttpStatus.OK).body(service.consultar());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> consultarPorID(@PathVariable Long id){
+    public ResponseEntity<Object> findById(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(service.consultarPorId(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> editar(@PathVariable Long id,@RequestBody @Valid Pais pais){
+    public ResponseEntity<Object> update(@PathVariable Long id,@RequestBody @Valid Pais pais){
         return ResponseEntity.status(HttpStatus.OK).body(service.alterar(id,pais));
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> excluir(@PathVariable Long id){
+    public ResponseEntity<Object> delete(@PathVariable Long id){
         service.excluir(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
