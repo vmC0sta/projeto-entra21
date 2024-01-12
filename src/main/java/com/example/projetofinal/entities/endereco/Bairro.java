@@ -1,6 +1,7 @@
 package com.example.projetofinal.entities.endereco;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
@@ -10,7 +11,8 @@ public class Bairro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @NotBlank( message = "Obrigatório informar a descrição")
+    @Column(unique = true)
     private String descricao;
 
     @ManyToOne
