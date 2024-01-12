@@ -19,21 +19,21 @@ public class PaisController {
 
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody @Valid Pais pais){
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.salvar(pais));
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(pais));
     }
     @GetMapping
     public ResponseEntity<List<Pais>> findAll(){
-        return ResponseEntity.status(HttpStatus.OK).body(service.consultar());
+        return ResponseEntity.status(HttpStatus.OK).body(service.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> findById(@PathVariable Long id){
-        return ResponseEntity.status(HttpStatus.OK).body(service.consultarPorId(id));
+        return ResponseEntity.status(HttpStatus.OK).body(service.findById(id));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(@PathVariable Long id,@RequestBody @Valid Pais pais){
-        return ResponseEntity.status(HttpStatus.OK).body(service.alterar(id,pais));
+        return ResponseEntity.status(HttpStatus.OK).body(service.update(id,pais));
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable Long id){
