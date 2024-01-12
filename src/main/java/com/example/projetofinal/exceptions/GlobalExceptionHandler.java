@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.Instant;
 
 @ControllerAdvice
@@ -32,6 +33,13 @@ public class GlobalExceptionHandler {
         StandardError error = buildStandardError(request, HttpStatus.BAD_REQUEST,"Recurso já existe.", e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
+
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    public ResponseEntity<StandardError> handleSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException e, HttpServletRequest request){
+        StandardError error = buildStandardError((request), HttpStatus.BAD_REQUEST,"A operação falhou devido a uma restrição de chave estrangeira. Certifique-se de que as dados informados são válidos e correspondem a um registro existente na tabela", e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+
 
     private StandardError buildStandardError(HttpServletRequest request, HttpStatus status, String error, String message) {
         StandardError standardError = new StandardError();
