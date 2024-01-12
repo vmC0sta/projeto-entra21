@@ -1,9 +1,9 @@
-package com.example.projetofinal.service.endereco;
+package com.example.projetofinal.services.endereco;
 
 import com.example.projetofinal.entities.endereco.Pais;
-import com.example.projetofinal.repository.endereco.PaisRepository;
-import com.example.projetofinal.service.Service;
-import jakarta.persistence.EntityNotFoundException;
+import com.example.projetofinal.exceptions.ResourceNotFoundException;
+import com.example.projetofinal.repositories.endereco.PaisRepository;
+import com.example.projetofinal.services.Service;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 
@@ -25,8 +25,9 @@ public class PaisService implements Service<Pais> {
     @Override
     public Pais consultarPorId(Long id) {
         Optional<Pais> optional = repository.findById(id);
-        return optional.orElseThrow(() -> new EntityNotFoundException("Contato não encontrado"));
+        return optional.orElseThrow(() -> new ResourceNotFoundException("País:","id",id));
     }
+
 
     @Override
     public void excluir(Long id) {

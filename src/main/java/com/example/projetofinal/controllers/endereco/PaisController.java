@@ -1,7 +1,7 @@
-package com.example.projetofinal.controller.endereco;
+package com.example.projetofinal.controllers.endereco;
 
 import com.example.projetofinal.entities.endereco.Pais;
-import com.example.projetofinal.service.endereco.PaisService;
+import com.example.projetofinal.services.endereco.PaisService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ public class PaisController {
     private final PaisService service;
 
     @PostMapping
-    public ResponseEntity<Object> salvar(@RequestBody Pais pais){
+    public ResponseEntity<Object> salvar(@RequestBody @Valid Pais pais){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.salvar(pais));
     }
     @GetMapping
@@ -27,12 +27,12 @@ public class PaisController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> consultarPorID(@Valid @PathVariable Long id){
+    public ResponseEntity<Object> consultarPorID(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(service.consultarPorId(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> editar(@PathVariable Long id,@RequestBody Pais pais){
+    public ResponseEntity<Object> editar(@PathVariable Long id,@RequestBody @Valid Pais pais){
         return ResponseEntity.status(HttpStatus.OK).body(service.alterar(id,pais));
     }
     @DeleteMapping("/{id}")
