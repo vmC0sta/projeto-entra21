@@ -37,7 +37,7 @@ public class PaisController {
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable Long id){
-        service.excluir(id);
+        service.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
