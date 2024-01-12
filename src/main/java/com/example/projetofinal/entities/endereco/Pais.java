@@ -15,7 +15,7 @@ public class Pais {
 
 
     @Column
-    @NotBlank(message = "O campo descrição não pode estar em branco")
+    @NotBlank(message = "Obrigatório informar a descrição")
     private String descricao;
 
 }

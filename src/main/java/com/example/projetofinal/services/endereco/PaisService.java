@@ -25,7 +25,7 @@ public class PaisService implements Service<Pais> {
     @Override
     public Pais consultarPorId(Long id) {
         Optional<Pais> optional = repository.findById(id);
-        return optional.orElseThrow(() -> new ResourceNotFoundException("País:","id",id));
+        return optional.orElseThrow(() -> new ResourceNotFoundException("País","id",id));
     }
 
 
