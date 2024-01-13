@@ -9,10 +9,11 @@ public class Cep {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
+
     private String descricao;
+
     @ManyToOne
-    @JoinColumn(name = "bairro_id", nullable = false)
-    private Bairro bairro;
+    @JoinColumn(name = "endereco_id", nullable = false)
+    private Endereco endereco;
 
 }
