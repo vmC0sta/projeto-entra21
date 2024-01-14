@@ -13,7 +13,7 @@ public class Cep {
     private String descricao;
 
     @ManyToOne
-    @JoinColumn(name = "endereco_id", nullable = false)
+    @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
 }
