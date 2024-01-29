@@ -1,5 +1,8 @@
-**Nome do Projeto:** Sistema de Gestão para Empresas de Atacado/Consignado de Jeans
+**Nome do Projeto:** 
 **DENIN**
+
+**O que é o projeto:**
+Sistema de Gestão para Empresas de Atacado/Consignado de Jeans
 
 **Visão Geral:**
 O projeto visa desenvolver um sistema web abrangente e intuitivo para empresas de atacado e consignado de jeans. O sistema permitirá que essas empresas gerenciem suas operações de forma eficiente, desde o controle de estoque e pedidos até a geração de relatórios de vendas. O objetivo é simplificar processos, aumentar a produtividade e fornecer insights valiosos para a tomada de decisões.
