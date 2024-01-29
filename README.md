@@ -1,5 +1,5 @@
 **Nome do Projeto:** 
-**DENIN**
+**DENIM**
 
 **O que é o projeto:**
 Sistema de Gestão para Empresas de Atacado/Consignado de Jeans
