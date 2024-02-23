@@ -1,5 +1,5 @@
 # Projeto-Entra21-Front-end
-Página Web do projeto de conclusão do curso entra21 
+Backend do projeto de conclusão do curso entra21 
  <div>
 <img src="http://img.shields.io/static/v1?label=STATUS%20DO%20PROJETO&message=%20CONCLUIDO&color=GREEN&style=for-the-badge_blank"></a>
    </div>
